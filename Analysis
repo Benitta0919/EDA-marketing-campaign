@@ -1,0 +1,3 @@
+SELECT ID, COUNT(ID)
+FROM marketing_data
+GROUP BY ID
