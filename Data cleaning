@@ -15,3 +15,85 @@ UPDATE marketing_data
 SET Income = CASE WHEN Income <> ' ' Then REPLACE(SUBSTRING(Income,CHARINDEX('"',Income)+2,CHARINDEX('.',Income)-3),',','')
 		ELSE 'N/A'
 		END
+
+Next, I have updated the Income column to datatype INT from varchar
+UPDATE marketing_data
+SET Income = CASE WHEN Income <> 'N/A' THEN CONVERT(INT,Income)
+		ELSE NULL
+		END
+
+
+4. Most of the integer column and date is in varchar datatpe. I have altered the columns to convert it into its appropriate datatype
+ALTER TABLE marketing_data
+ALTER COLUMN ID FLOAT NOT NULL
+
+ALTER TABLE marketing_data
+ALTER COLUMN Date_Customer_Joined DATE
+
+ALTER TABLE marketing_data
+ALTER COLUMN Income float
+
+ALTER TABLE marketing_data
+ALTER COLUMN Year_Birth DATE
+
+ALTER TABLE marketing_data
+ALTER COLUMN Kidhome INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN Teenhome INT
+
+ALTER TABLE marketing_data
+ALTER Column Recency INT
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_Wines INT
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_Fruits INT;
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_MeatProducts INT;
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_FishProducts INT;
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_SweetProducts INT;
+
+ALTER TABLE marketing_data
+ALTER Column Amount_On_GoldProds INT;
+
+ALTER TABLE marketing_data
+ALTER COLUMN NumDealsPurchases INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN NumWebPurchases INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN NumCatalogPurchases INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN NumStorePurchases INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN NumWebVisitsMonth INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN AcceptedCmp1 INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN AcceptedCmp2 INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN AcceptedCmp3 INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN AcceptedCmp4 INT
+
+ALTER TABLE marketing_data
+ALTER COLUMN AcceptedCmp5 INT
+
+ALTER TABLE marketing_data
+ADD Revenue INT
+
+
