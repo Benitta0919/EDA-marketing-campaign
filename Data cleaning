@@ -1,0 +1,17 @@
+1.	Checking for duplicates:
+SELECT ID, COUNT(ID)
+FROM marketing_data
+GROUP BY ID
+HAVING COUNT(ID)>1;
+
+There are no duplicate values in the table.
+
+2. checking for null values
+
+3. Cleaning the income column
+The income column has symbols inconsistent with its actual datatype. So I used replace and substring to extract the numerical income value and update the column.
+
+UPDATE marketing_data
+SET Income = CASE WHEN Income <> ' ' Then REPLACE(SUBSTRING(Income,CHARINDEX('"',Income)+2,CHARINDEX('.',Income)-3),',','')
+		ELSE 'N/A'
+		END
