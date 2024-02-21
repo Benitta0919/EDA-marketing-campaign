@@ -96,4 +96,32 @@ ALTER COLUMN AcceptedCmp5 INT
 ALTER TABLE marketing_data
 ADD Revenue INT
 
+5. Updating the null values in the Income column to its median value
+The income column has 24 rows of null values contributing to 1.07 percent of data. 
+So let's replace the null values with the income column's median value.
+
+Finding median value:
+Here I have used the Row window function to find the median value as SQL does not have an inbuild function to calculate the value.
+I numbered the columns using the row function and then sorted them in ascending and descending order.
+Next, I used the where clause to filter the value with one or less than one value difference when subtracting both columns.
+This gives us the median value 
+
+WITH cte(ASCc,DSC) as (SELECT
+				ROW_NUMBER() OVER(ORDER BY Income ASC) AS ASCc,
+				ROW_NUMBER() OVER(ORDER BY Income DESC) AS DSC
+
+FROM marketing_data)
+SELECT * FROM cte
+WHERE ABS(ASCc-DSC)<= 1
+
+Updating the median value in the Income column:
+UPDATE marketing_data
+SET [Income ] = CASE WHEN Income IS NULL THEN 1121
+		ELSE Income
+		END
+
+6. Next, there are some extreme outliers in the year column, which acts out of context to the dataset
+so removing them is the best solution as they could distort the distribution.
+
+
 
