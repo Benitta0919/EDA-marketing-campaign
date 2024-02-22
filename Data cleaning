@@ -140,8 +140,4 @@ UPDATE marketing_data
 SET Total_amount = Amount_On_Wines+Amount_On_Fruits+Amount_On_MeatProducts+Amount_On_FishProducts+Amount_On_SweetProducts+Amount_On_GoldProds
 
 UPDATE marketing_data
-<<<<<<< HEAD
 SET Age = Year(Date_Customer_Joined)-YEAR(Year_Birth)
-=======
-SET Age = Year(Date_Customer_Joined)-YEAR(Year_Birth)
->>>>>>> 88205521a0784efe401284c3813b007a13b20edc
