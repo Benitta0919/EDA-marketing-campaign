@@ -122,3 +122,5 @@ SET [Income ] = CASE WHEN Income IS NULL THEN 1121
 
 6. Next, there are some extreme outliers in the year column, which acts out of context to the dataset
 so removing them is the best solution as they could distort the distribution.
+
+7. 
