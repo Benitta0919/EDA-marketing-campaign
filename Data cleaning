@@ -123,4 +123,21 @@ SET [Income ] = CASE WHEN Income IS NULL THEN 1121
 6. Next, there are some extreme outliers in the year column, which acts out of context to the dataset
 so removing them is the best solution as they could distort the distribution.
 
-7. 
+SELECT ID, YEAR(Year_birth) FROM marketing_data
+ORDER BY YEAR(Year_birth)
+
+DELETE FROM marketing_data
+WHERE ID IN(11004,1150,7829)
+
+7. Created two new columns from the current columns for analysis(age and total amount)
+
+ALTER TABLE marketing_data
+ADD Total_amount INT
+ALTER TABLE marketing_data
+ADD Age INT
+
+UPDATE marketing_data
+SET Total_amount = Amount_On_Wines+Amount_On_Fruits+Amount_On_MeatProducts+Amount_On_FishProducts+Amount_On_SweetProducts+Amount_On_GoldProds
+
+UPDATE marketing_data
+SET Age = Year(Date_Customer_Joined)-YEAR(Year_Birth)
